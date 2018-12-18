@@ -10,6 +10,17 @@
 		</layout>
 	</appender>
 	
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/main.log" />
+		<param name="Append" value="true" />
+		<param name="ImmediateFlush" value="true" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %d{Z} [%t] %-5p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	
 	<!-- Application Loggers -->
 	<logger name="com.syncon.registation">
 		<level value="info" />
