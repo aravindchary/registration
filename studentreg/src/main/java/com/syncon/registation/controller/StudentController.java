@@ -2,6 +2,8 @@ package com.syncon.registation.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,10 +21,12 @@ import com.syncon.registation.service.IStudentService;
 public class StudentController {
 	@Autowired
 	private IStudentService studentService;
+	
+	private Logger logger = LoggerFactory.getLogger(StudentController.class);
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView load() {
-
+		logger.info("Calling load method....");
 		ModelAndView view = new ModelAndView("saveReg");
 		List<Student> stulist = studentService.findAll();
 		view.addObject("list", stulist); // list is key which will configured in jsp table.
@@ -31,7 +35,7 @@ public class StudentController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView save(@ModelAttribute Student student) {
-		System.out.println("Calling Save student method..");
+		logger.info("Calling Save student method..");
 		System.out.println(student);
 		ModelAndView view = new ModelAndView("saveReg");
 		Integer idVal = student.getId();
@@ -43,7 +47,7 @@ public class StudentController {
 				view.addObject("message", "Updated successfully student...");
 			}
 		}catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 			view = new ModelAndView("editReg");
 			view.addObject("errorMessage", e.getMessage());
 			view.addObject("student", student);
@@ -56,6 +60,7 @@ public class StudentController {
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam(value = "id", required = true) int id) {
+		logger.info("Calling edit method..");
 		Student stu = studentService.findById(id);
 		ModelAndView modelView = new ModelAndView("editReg");
 		modelView.addObject("student", stu);
@@ -66,12 +71,13 @@ public class StudentController {
 
 	@RequestMapping(value = "/delete/{idVal}")
 	public ModelAndView delete(@PathVariable(value = "idVal") int id) {
+		logger.info("Calling delete method....");
 		ModelAndView view = new ModelAndView("saveReg");
 		try{
 			int val =studentService.delete(id);
 			view.addObject("message", "Successfully deleted student with id : " + id);
 		}catch(Exception e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 			view.addObject("errorMessage",e.getMessage());
 		}
 		List<Student> stulist = studentService.findAll();
