@@ -27,7 +27,6 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		System.out.println("eat samosaaa");
 		System.out.println("eat pizaaa");
-		System.out.println("eat burger");
 		System.out.println("aravind changes.....");
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);

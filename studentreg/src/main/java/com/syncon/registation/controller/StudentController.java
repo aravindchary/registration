@@ -26,6 +26,8 @@ public class StudentController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView load() {
+		
+		
 		logger.info("Calling load method....");
 		ModelAndView view = new ModelAndView("saveReg");
 		List<Student> stulist = studentService.findAll();
