@@ -29,6 +29,8 @@ public class StudentController {
 		
 		
 		logger.info("Calling load method....");
+		logger.info("Calling load method Git Hub....");
+		
 		ModelAndView view = new ModelAndView("saveReg");
 		List<Student> stulist = studentService.findAll();
 		view.addObject("list", stulist); // list is key which will configured in jsp table.
