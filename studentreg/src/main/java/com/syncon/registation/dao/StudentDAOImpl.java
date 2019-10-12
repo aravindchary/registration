@@ -2,9 +2,6 @@ package com.syncon.registation.dao;
 
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder;
-
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,6 +19,7 @@ public class StudentDAOImpl implements IStudentDAO {
 	@Override
 	public void save(Student student) {
 		System.out.println("Calling dao..");
+		System.out.println("Calling dao 2..");
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(student);
 		
