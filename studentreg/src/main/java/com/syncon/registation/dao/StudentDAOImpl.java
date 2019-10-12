@@ -20,6 +20,7 @@ public class StudentDAOImpl implements IStudentDAO {
 	public void save(Student student) {
 		System.out.println("Calling dao..");
 		System.out.println("Calling dao 2..");
+		System.out.println("Calling dao 3..");
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(student);
 		

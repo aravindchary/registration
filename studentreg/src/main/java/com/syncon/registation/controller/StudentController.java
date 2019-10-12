@@ -31,7 +31,6 @@ public class StudentController {
 		logger.info("Calling load method....");
 		logger.info("Calling load method Git Hub....");
 		logger.info("Calling load method Git Hub 3....");
-		logger.info("Calling load method Git Hub 4....");
 		
 		ModelAndView view = new ModelAndView("saveReg");
 		List<Student> stulist = studentService.findAll();
